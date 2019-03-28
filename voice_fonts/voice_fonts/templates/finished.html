@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block content %}
+    <h1>{{ title }}</h1>
+    <h3>{{ message }}</h3>
+    <a href={{ txtURL }}><img src="static/images/text_icon.png" width="282" height="286" title="Text Download" alt="Text Download"></a>
+    <a href={{ zipURL }}><img src="static/images/wave_icon.png" width="282" height="286" title="Text Download" alt="Text Download"></a>
+    
+    {% endblock %}
+</body>
+
+</html>

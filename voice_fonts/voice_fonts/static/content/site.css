@@ -1,0 +1,497 @@
+/*parent containers*/
+    html{
+        background-color: black;
+        height: 100%;
+        width: 100%;
+    
+    }
+    body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+        background-image:linear-gradient(to bottom, rgba(76,76,76,1), rgba(0,0,0,1));
+        color: white;
+        line-height: 0;
+        margin: 0;
+        height: 98%;
+
+    }
+    .wrapper{
+        min-height: 90%;
+        margin-bottom: 0%;
+    }
+/* Set width on the form input elements since they're 100% wide by default */
+    input,
+    select,
+    textarea {
+        max-width: 280px;
+    }
+/* styles for validation helpers */
+    .field-validation-error {
+        color: #b94a48;
+    }
+    .field-validation-valid {
+        display: none;
+    }
+    input.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+    input[type="checkbox"].input-validation-error {
+        border: 0 none;
+    }
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+    .validation-summary-valid {
+        display: none;
+    }
+/*navbar*/
+    .navbar{
+        padding-left: 15%;
+        border-bottom: 3px solid #e54f00;
+        color: white;
+    }
+    .navbar-brand{ 
+        padding-top:15px;
+        padding-left:0px;
+        color: white!important;
+        font-size:2em;
+        text-shadow: 2px 2px black;
+    }
+    .navbar-toggle{
+        display: none;
+    }
+/*Index intro box style*/
+    .intro{
+        border: 3px solid #e54f00;
+        border-radius:10px;
+        margin-top:5%;
+        margin-left:15%;
+        width:70%;
+        padding: 1%;
+        text-align:center;
+        box-shadow: 1px 1px 2px 4px black;
+}
+/*header texts recording page*/
+    
+    .headBox{
+        text-align: center;
+        padding-top:1%;
+        padding-bottom: 1%;
+    }
+    .headBoxbtm{
+        text-align: center;
+        padding-top:1%;
+        padding-bottom: 1%;
+    }
+/*Page text*/
+    .headText{
+        margin: 0px!important;
+    }
+    .messageText{
+        margin: 0px!important;
+    }
+    .messageTextbox{
+        text-align: center;
+        border-top: 3px solid #e54f00;
+        padding-top:5%;
+        padding-bottom: 5%; 
+    }
+    .messageTextboxBtm{
+        text-align: center;
+        border-top: 3px solid #e54f00;
+        padding-top:1%;
+        padding-bottom: 1%; 
+    }
+
+/*Button bar */
+    .buttonBar{
+        border-top: 3px solid #e54f00;
+        background-color: #E54F00;
+        text-align: center;
+        border-radius: 0px 0px 7px 7px;
+        display: flex;
+    }
+/*Buttons  and their relavent animation styles*/
+    .recordBtn{
+        background:linear-gradient( to left, white 50%, #E54F00 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        transition: all ease .2s;
+        color: black;
+        border: 3px solid #e54f00;
+        font-size: 1.5em;
+        padding: 13px;
+        border-radius: 10px;
+        display: block;
+        margin-top: 5%;
+        margin-left: 47%;
+        width:110px;
+        box-shadow:1px 1px 2px 4px black; 
+    }
+        .recordBtn:hover{
+            box-shadow:0px 0px 0px 3px #262626;
+            text-decoration: none;
+            background-position: left bottom;
+            color: white;
+        }
+        .recordBtn:hover .fa-paper-plane{
+            color: white;
+            transition: all ease .2s;
+        }
+    .recordBtn2{
+        background-color: white;
+        color: black;
+        font-size: 1.5em;
+        padding: 13px;
+        display: inline-block;
+        width:25%;
+        border-right: 3px solid #e54f00;
+        border-left: 3px solid #e54f00;
+        text-decoration: none!important;
+        outline: none;
+    }
+        .recordBtn2:hover{
+            animation: blinker 1s linear infinite;
+            text-decoration: none!important;
+            outline: none;
+            padding: 13px;
+        }
+            @keyframes blinker {
+            50% {
+                color: red;
+            }
+            }
+    .backBtn{
+        background-color: white;
+        color: black;
+        font-size: 1.5em;
+        padding: 13px;
+        border-radius: 0px 0px 0px 7px;
+        display: inline-block;
+        width:25%;
+        text-decoration: none!important;
+        border-right: 3px solid #e54f00;
+    }
+        .backBtn:hover{
+            color: transparent;
+        }
+        .backBtn:hover .fa-angle-left{
+            display: none
+        }
+    .backBtn .fa-angle-double-left{
+        display: none;
+    }
+        .backBtn:hover .fa-angle-double-left{
+            -webkit-animation: slide-left .5s ease-out;
+            display: block;
+        }
+            @keyframes slide-left {
+                0% { opacity: 0; -webkit-transform: translateX(20%);}
+                100% { opacity: 1; -webkit-transform: translateX(0);}
+            }
+    .nextBtn{
+        background-color: white;
+        border-radius: 0px 0px 7px 0px;
+        color: black;
+        font-size: 1.5em;
+        padding: 13px;
+        display: inline-block;
+        float: right;
+        width:25%;
+        text-decoration: none!important;
+        border-left: 3px solid #e54f00;
+    }
+    .nextBtn .fa-angle-double-right{
+        display: none;
+    }
+    .nextBtn:hover .fa-angle-double-right{
+        -webkit-animation: slide-right .5s ease-out;
+        display: block;
+    }
+            @keyframes slide-right {
+                0% { opacity: 0; -webkit-transform: translateX(-20%);}
+               100% { opacity: 1; -webkit-transform: translateX(0);}
+            }
+    .nextBtn:hover{
+        color: transparent;
+    }
+        .nextBtn:hover .fa-angle-right{
+        display: none
+        }
+            
+    .stopBtn{
+        background-color: white;
+        color: black;
+        font-size: 1.5em;
+        padding: 13px;
+        display: inline-block;
+        width:25%;
+        text-decoration: none!important;
+        border-right: 3px solid #e54f00;
+        border-left: 3px solid #e54f00
+    }
+    #SessionID{
+        display: none;
+    }
+    .finishBtn{
+        background:linear-gradient( to left, white 50%, #E54F00 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        transition: all ease .2s;
+        margin-top: 5%;
+        margin-left:40%;
+        color: black;
+        border: 3px solid #e54f00;
+        font-size: 1.5em;
+        padding: 13px;
+        border-radius: 10px;
+        display: block;
+        width:20%;
+        text-align: center;
+        box-shadow:0px 5px 2px 4px black; 
+        text-decoration: none!important;
+        
+        
+    }
+        .finishBtn:hover{
+            margin-top: 5%;
+            margin-left:40%;
+            color: black;
+            border: 3px solid #e54f00;
+            font-size: 1.5em;
+            padding: 13px;
+            border-radius: 10px;
+            display: block;
+            width:20%;
+            text-align: center;
+            box-shadow:0px 1px 2px 3px black; 
+            text-decoration: none!important;
+            background-position: left bottom;
+            color: white!important;
+        }
+            .finishBtn:hover .fa-paper-plane{
+                color: white;
+                transition: all .2s;
+            }
+/*playback library box */
+    pre{
+        display: block;
+        padding: 10px;
+        line-height: 1.1;
+        color: white;
+        background-color: transparent;
+        border:none;
+    }
+/*shadow for outer divs*/
+    .boxShadow{
+        border: 3px solid #E54F00;
+        width:70%;
+        margin-left: 15%;
+        margin-top: 3%;
+        border-radius:10px;
+        box-shadow: 1px 1px 2px 4px black
+    }
+/*icons standard style*/
+    .fas{
+        color:red;
+        position: inherit;
+    }
+/*footer style*/
+    footer{
+        width: 100%;
+        text-align: center;
+        border-top: 3px solid #e54f00;
+        margin-top: 3%;
+    }
+    .footertext{
+    padding-top: 1.5%
+    }
+    .footerlogo{
+        padding-top:0.5%;
+        padding-right:3%;
+        text-align:right;
+    }
+/*Large laptop media query*/
+    @media screen and (max-width: 1500px){
+        .wrapper{
+            min-height:65%;
+        }
+    }
+/*standard laptop media query */
+    @media screen and (max-width: 1100px){
+        .navbar{
+            padding-left: 10%;
+        }
+        .boxShadow{
+            margin-left:10%;
+            width: 80%;
+        }
+        .wrapper{
+            min-height: 75%;
+        }
+    }
+/*tablet media query*/
+    @media screen and (max-width: 800px){
+        .wrapper{
+            min-height:80%;
+        }
+        .navbar-toggle{
+            display: none;
+        }
+        .navbar-header{
+            text-align: center;
+        }
+        .intro{
+            width: 80%;
+            margin-left: 10%;
+        }
+        .recordBtn{
+            margin-left: 45%;
+        }
+        .boxShadow{
+            width: 90%;
+            margin-left: 5%;
+        }
+    }
+/*small tablet or landscape tablet media query*/
+    @media screen and (max-width:600px){
+        .fas{
+            display: none;
+        }
+        .finishBtn{
+            font-size: 1.5em;
+            padding: 15px;
+        }
+        .backBtn{
+            padding-top:15px;
+            padding-bottom:15px;
+        }
+        .stopBtn{
+            padding-top:15px;
+            padding-bottom:15px;
+        }
+        .nextBtn{
+            padding-top:15px;
+            padding-bottom:15px;
+        }
+    }
+/*large phone media query*/
+    @media screen and (max-width:430px){
+        
+        .wrapper{
+            min-height: 90%;
+        }
+        .navbar-brand{
+            font-size:1.7em;
+        }       
+        .intro{
+            font-size: 0.7em;
+            margin-top:5%;
+        }
+        .recordBtn{
+            width: 70px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-left:42%;
+            margin-top: 40%;
+        }
+        .boxShadow{
+            font-size: 0.7em;
+        }
+        .headText{
+            font-size:2.5em;
+        }
+        .messageText{
+            font-size: 2em;
+        }
+        .messageTextboxBtm{
+            font-size: 0.8em;
+        }
+        .finishBtn{
+            font-size: 1.2em;
+        }
+        footer{
+            padding-top:3%;
+        }
+        
+    }
+/*small phone media query*/
+    @media screen and (max-width:375px){
+        .wrapper{
+            min-height:90%;
+        }
+        
+        .navbar-brand{
+            .font-size:1.4em;
+        }       
+        .intro{
+            font-size: 0.8em;
+            margin-top:15%;
+        }
+        .recordBtn{
+            width: 70px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-left:42%;
+            margin-top: 25%;
+        }
+        .backBtn{
+            width:auto;
+        }
+        .boxShadow{
+            font-size: 0.8em;
+        }
+        .headText{
+            font-size:2.2em;
+        }
+        .messageText{
+            font-size: 1.5em;
+        }
+        .messageTextboxBtm{
+            font-size: 0.6em;
+        }
+
+
+    }
+/*accesability smallest media query*/
+    @media screen and (max-width: 330px){
+        .finishBtn{
+            font-size: 0.8em;
+        }
+        .wrapper{
+            min-height:90%;
+        }
+        
+        .navbar-brand{
+            .font-size:1em;
+        }       
+        .intro{
+            font-size: 0.7em;
+            margin-top:15%;
+        }
+        .recordBtn{
+            width: 70px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-left:42%;
+            margin-top: 25%;
+        }
+        .backBtn{
+            width:auto;
+        }
+        .boxShadow{
+            font-size: 0.7em;
+        }
+        .headText{
+            font-size:2.1em;
+        }
+        .messageText{
+            font-size: 1.4em;
+        }
+        .messageTextboxBtm{
+            font-size: 0.5em;
+        }
+        footer{
+            padding-top:3%;
+        }
+    }

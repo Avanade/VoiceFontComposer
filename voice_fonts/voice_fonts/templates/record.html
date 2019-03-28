@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    {% extends "layout.html" %}
+    {% block content %}
+    <div class="layoutSpacing">
+        <div class="boxShadow">
+            <div class="headBox">
+                 <!--- <h1>{{ title }}.</h1>-->
+                 <h2 id = "ID" class="headText">Recording ID: {{ ID }}</h2>
+            </div>
+                    <div class="messageTextbox">
+                        <h3 class="messageText">{{ message }}</h3>
+                    </div>
+            <div class="buttonBar">
+                <a id="prevButton" href="{{ url_for('previous_clip') }}" class="backBtn"><i class="fas fa-angle-left"></i><i class="fas fa-angle-double-left"></i> Previous</a>
+                <button id="recordButton" class="recordBtn2">REC <i class="fas fa-microphone"></i></button>
+                <button id="stopButton" class="stopBtn" disabled>Stop <i class="fas fa-stop"></i> </button>
+                <a id="nextButton"href="{{ url_for('next_clip') }}" class="nextBtn">Next <i class="fas fa-angle-right"></i></span><i class="fas fa-angle-double-right"></i></a>
+            </div>
+        </div>
+        <a id="expButton" href="{{ url_for('export') }}" class="finishBtn">Finish <i class="fas fa-paper-plane"></i></a>
+        <div class="boxShadow">
+            <div class="headBoxbtm">
+                <h2 class="headText">Playback</h2> 
+            </div>
+            <div class="messageTextboxBtm">
+                <ol id="recordingsList"></ol>
+                <h2 class="headText">Log</h2>
+                    <pre id="log"></pre>
+            </div>
+        </div>
+        <h2 id = "SessionID" class="headText"> Session ID: {{ SessionID }}</h2>
+    </div>
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+    <script src="static/scripts/WebAudioRecorder.min.js"></script>
+    <script src="static/scripts/voiceapp.js"></script>
+    {% endblock %}
+    </body>
+</html>

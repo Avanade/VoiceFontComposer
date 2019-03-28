@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="intro">
+        <h2 class="headText">Voice Font Services</h2>
+        <h3 class="messageText">This is a preview of the Azure voice font service. Use this tool to record your voice, and generate the training data for the service. Read the text on the screen as accurately as you can. You can re-record as many times as you like. Recordings should be under one minute each, so speak at a natural pace. You can use as many sessions as you like, so be sure to take breaks and finish and export each time.</h3>
+    </div>
+    <a href="{{ url_for('record') }}" class="recordBtn">REC <i class="fas fa-paper-plane"></i> </a>
+{% endblock %}
