@@ -1,17 +1,22 @@
 """
-Routes and views for the flask application.
+The flask application package and route/view rendering.
 """
-
+import os
+from flask import Flask, render_template, url_for
 from datetime import datetime
-from flask import render_template
-from voice_fonts import app
 import voice
 import json
 import requests
 import urllib
 import http
 
-global newest_clip
+app = Flask(__name__)
+
+global base_url
+
+config_data=open("config.json").read()
+data = json.loads(config_data)
+base_url = data["FunctionApp"][0]["BaseURL"]
 
 @app.route('/')
 @app.route('/home')
@@ -48,7 +53,7 @@ def record():
     "Renders the record page."
     voice.statements.iterate()
     #initilise container space
-    url = 'https://yourservice.azurewebsites.net/api/Initialise'
+    url = base_url + '/api/Initialise'
     params = {'sessionID': voice.statements.session_id}
     try:
         response = requests.post(url = url,params = params)
@@ -95,7 +100,7 @@ def previous_clip():
 def export():
         voice.statements.export_list()
 
-        url = 'https://yourservice.azurewebsites.net/api/PassBlob'
+        url = base_url+'/api/PassBlob'
         params = {'sessionID': voice.statements.session_id,
                 'fileID': 'Statements.txt'}
         body = voice.statements.harvard.to_csv (encoding = "utf-8", header = None, index = None, sep = '\t')
@@ -108,7 +113,7 @@ def export():
             print('Error:')
             print(e)
 
-        zipUrl = 'https://yourservice.azurewebsites.net/api/zipfiles'
+        zipUrl = base_url+'/api/zipfiles'
         zipParams = {'sessionID': voice.statements.session_id}
         try:
             response = requests.post(url = zipUrl,params = zipParams)
