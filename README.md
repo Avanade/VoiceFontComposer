@@ -16,3 +16,6 @@ The URLs in views .py will need to be changed to those of the services you have 
 
 N.B. that the function app must be developed in Python 3.6.8 due to constraints in Azure.
 
+# Related Projects
+
+[JS Web Audio Recorder](https://github.com/higuma/web-audio-recorder-js)
