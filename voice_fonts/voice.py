@@ -4,7 +4,7 @@ import uuid
 class HarvardStatments(object):
     """An object to handle the list of Harvard Statments"""
     def __init__(self):
-        self.harvard = pd.read_csv(r"voice_fonts/Harvard Statements_clean.txt",sep="\t",dtype=str)
+        self.harvard = pd.read_csv(r"Harvard Statements_clean.txt",sep="\t",dtype=str)
         self.iterator = 0
         self.maxiteration = 0
         self.word_rate = 140 #target spoken word rate
@@ -17,7 +17,7 @@ class HarvardStatments(object):
         
     def reset(self):
         """Reset the list to the original order"""
-        self.harvard = pd.read_csv(r"voice_fonts/Harvard Statements_clean.txt",sep="\t",dtype=str)
+        self.harvard = pd.read_csv(r"Harvard Statements_clean.txt",sep="\t",dtype=str)
     
     def select(self,num):
         """Select the first 'num' of entries required. NB this cannot be reversed.
