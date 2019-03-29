@@ -19,7 +19,7 @@ def main(mytimer: func.TimerRequest) -> None:
     #conect to storage account
     cwd = os.path.dirname(os.path.realpath(__file__))
     print(cwd)
-    json_data=open(cwd + "/keys.json").read()
+    json_data=open(cwd + "/config.json").read()
     data = json.loads(json_data)
     print(data)
 

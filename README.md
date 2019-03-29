@@ -10,7 +10,7 @@ To install the voice fonts app on Azure you will need the following Azure servic
 3.    An Azure web app - Linux running python
 
 # Build and Test
-The function app and web app can be built locally in visual studio code. The Azure extention to VS code can be used to deploy this code to the Azure services. The keys.json files will need to be updated with the account name and key of the Azure storage container you would like to use.
+The function app and web app can be built locally in visual studio code. The Azure extention to VS code can be used to deploy this code to the Azure services. The config.json files will need to be updated with the account name and key of the Azure storage container you would like to use as well as the URL of the function app - whether local or in Azure.
 
 The URLs in views .py will need to be changed to those of the services you have created, whether using an Azure host or a local host.
 

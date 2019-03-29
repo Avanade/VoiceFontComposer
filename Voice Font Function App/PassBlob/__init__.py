@@ -11,14 +11,15 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #conect to storage account
     cwd = os.path.dirname(os.path.realpath(__file__))
     print(cwd)
-    json_data=open(cwd + "/keys.json").read()
+    json_data=open(cwd + "/config.json").read()
     data = json.loads(json_data)
     print(data)
 
     account = data["Storage"][0]["Account"]
     accountKey = data["Storage"][0]["Key"]
+    origin = data["FunctionApp"][0]["URL"]
     storage = BlockBlobService(account, accountKey)
-    return_headers = {"Access-Control-Allow-Origin":"http://localhost:5555","Access-Control-Allow-Credentials":"true"}
+    return_headers = {"Access-Control-Allow-Origin":origin,"Access-Control-Allow-Credentials":"true"}
 
     sessionID = req.params.get('sessionID')
     fileID = req.params.get('fileID')
