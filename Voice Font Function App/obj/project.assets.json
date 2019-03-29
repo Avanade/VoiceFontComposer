@@ -3767,11 +3767,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ferguskidd/OneDrive - Avanade/Git/VoiceFontComposer/Voice Font Function App/extensions.csproj",
+      "projectUniqueName": "/Users/ferguskidd/git/VoiceFontComposer/Voice Font Function App/extensions.csproj",
       "projectName": "extensions",
-      "projectPath": "/Users/ferguskidd/OneDrive - Avanade/Git/VoiceFontComposer/Voice Font Function App/extensions.csproj",
+      "projectPath": "/Users/ferguskidd/git/VoiceFontComposer/Voice Font Function App/extensions.csproj",
       "packagesPath": "/Users/ferguskidd/.nuget/packages/",
-      "outputPath": "/Users/ferguskidd/OneDrive - Avanade/Git/VoiceFontComposer/Voice Font Function App/obj/",
+      "outputPath": "/Users/ferguskidd/git/VoiceFontComposer/Voice Font Function App/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
