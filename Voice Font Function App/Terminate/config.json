@@ -1,0 +1,14 @@
+{
+  "Storage": [
+    {
+      "Account": "accountname",
+      "Key":"accountkey"
+    }
+  ],
+  "FunctionApp": [
+    {
+        "URL":"https://yourservice.azurewebsites.net"
+    }
+  ]
+  
+}
