@@ -1,0 +1,8 @@
+{
+    "FunctionApp": [
+      {
+        "BaseURL": "https://yourservicename.azurewebsites.net"
+      }
+    ]
+  }
+  
