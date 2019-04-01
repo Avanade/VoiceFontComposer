@@ -51,13 +51,15 @@ def about():
 @app.route('/record', methods=['GET', 'POST'])
 def record(): 
     "Renders the record page."
+    #generate a new session_id:
+    voice.statements.new_session()
     voice.statements.iterate()
     #initilise container space
     url = base_url + '/api/Initialise'
     params = {'sessionID': voice.statements.session_id}
     try:
         response = requests.post(url = url,params = params)
-        code = response.status_code
+        print(response)
     except Exception as e:
         print('Error:')
         print(e)

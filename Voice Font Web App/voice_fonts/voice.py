@@ -10,7 +10,11 @@ class HarvardStatments(object):
         self.word_rate = 140 #target spoken word rate
         self.pause_count = 8 #pause ocunt in seconds (for full stops)
         self.session_id = str(uuid.uuid1())
-        
+    def new_session(self):
+        """Start a new session after initiation"""
+        self.session_id = str(uuid.uuid1())
+        self.iterator = 0
+        self.maxiteration = 0
     def shuffle(self):
         """Shuffle the list into a pseudo-random order"""
         self.harvard = self.harvard.sample(frac=1).reset_index(drop=True)
