@@ -17,7 +17,7 @@ var nextButton = document.getElementById("nextButton");
 var prevButton = document.getElementById("prevButton");
 var expButton = document.getElementById("expButton");
 
-//add events to those 2 buttons
+//add events to those 3 buttons
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 
@@ -74,10 +74,6 @@ function startRecording() {
 
         recorder.onComplete = function (recorder, blob) {
             __log("Encoding complete");
-            nextButton.disabled = true;
-            prevButton.disabled = true;
-            recordButton.disabled = true;
-            expButton.disabled = true;
 
             createDownloadLink(blob);
             encodingTypeSelect.disabled = false;
@@ -120,6 +116,10 @@ function startRecording() {
         recorder.startRecording();
 
         __log("Recording started");
+        nextButton.disabled = true;
+        prevButton.disabled = true;
+        recordButton.disabled = true;
+        expButton.disabled = true;
 
     }).catch(function (err) {
         //enable the record button if getUSerMedia() fails
