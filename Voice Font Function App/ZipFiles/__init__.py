@@ -1,8 +1,10 @@
 import logging
 import os
+import io
 import zipfile
 import json
 from datetime import datetime, timedelta
+import pandas as pd
 
 import azure.functions as func
 from azure.storage.blob import (
@@ -31,7 +33,11 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
     sessionID = req.params.get('sessionID')
     startTime = datetime.now().strftime('%Y%m%d%H%M')
-    zipName = 'Recordings'+startTime
+    audiozipName = 'Recordings'+startTime
+    textzipName = 'Statements'+startTime
+
+    #open the text file
+    harvard = pd.read_csv(cwd+"/Harvard Statements_clean.txt",sep='\t').drop(columns=['ID'])
 
     if not sessionID:
         return func.HttpResponse(
@@ -46,47 +52,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 
 
-    pathBase = str(os.path.dirname(os.path.realpath(__file__)) + '/' + zipName)
-    print(pathBase)
-    if not os.path.exists(pathBase):
-        os.makedirs(pathBase)
+    a_file_like_object = io.BytesIO()
+    audiozf = zipfile.ZipFile(a_file_like_object,'w')
 
     for blob in storage.list_blobs(sessionID):
-        storage.get_blob_to_path(sessionID, blob.name, pathBase+'/'+blob.name)
+        if '.wav' in blob.name:
+            blob_bytes = storage.get_blob_to_bytes(sessionID,blob.name)
+            audiozf.writestr(blob.name,blob_bytes.content)
 
-    zf = zipfile.ZipFile(pathBase+'/'+zipName+".zip", "w")
+    audiozf.close()
 
-    for filename in os.listdir(pathBase):
-        if filename.endswith(".wav"):            
-            zf.write(os.path.join(pathBase, filename),filename)
-        else:
-            print('something else')
-    zf.close()
+    t_file_like_object = io.BytesIO()
+    textzf = zipfile.ZipFile(t_file_like_object,'w')
+
+    for blob in storage.list_blobs(sessionID):
+        if '.wav' in blob.name:
+            #only send text files that have a wav
+            #blob_bytes = storage.get_blob_to_bytes(sessionID,blob.name.replace('.wav','.txt'))
+
+            textzf.writestr(blob.name.replace('.wav','.txt'),harvard.iloc[int(blob.name.replace('.wav',''))-1].to_csv (encoding = "utf-8", header = None, index = None, sep = '\t'))
+
+    textzf.close()
 
     #Upload the zip to the blob
-    storage.create_blob_from_path(sessionID,zipName+'.zip',pathBase+'/'+zipName+".zip")
-
-    #remove all files
-    for file in os.scandir(pathBase):
-        os.unlink(file.path)
-
-    #rename the statements text file
-    if not storage.exists(sessionID,'Statements.txt'):
-        return func.HttpResponse(
-             "Text file expected",
-             status_code=400
-        )
-
-    blob_url = storage.make_blob_url(sessionID, 'Statements.txt')
-    newName = 'Statements'+startTime+'.txt'
-    storage.copy_blob(sessionID, newName, blob_url)
+    storage.create_blob_from_bytes(sessionID,audiozipName+'.zip',blob = bytes(a_file_like_object.getvalue()))
+    storage.create_blob_from_bytes(sessionID,textzipName+'.zip',blob = bytes(t_file_like_object.getvalue()))
 
     #generate SAS URLs
-    zipURL = generate_sas_url(account,accountKey,sessionID,zipName+'.zip')
-    txtURL = generate_sas_url(account,accountKey,sessionID,newName)
+    audioZipURL = generate_sas_url(account,accountKey,sessionID,audiozipName+'.zip')
+    txtURL = generate_sas_url(account,accountKey,sessionID,textzipName+'.zip')
  
     #make a simple json
-    data = {"Zip URL": zipURL, "Text URL": txtURL}
+    data = {"Audio URL": audioZipURL, "Text URL": txtURL}
 
     json_data = json.dumps(data)
 

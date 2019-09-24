@@ -17,13 +17,13 @@
                         <h3 class="messageText">{{ message }}</h3>
                     </div>
             <div class="buttonBar">
-                <button id="prevButton" href="{{ url_for('previous_clip') }}" class="backBtn"><i class="fas fa-angle-left"></i><i class="fas fa-angle-double-left"></i> Previous</button>
+                <button type="button" id="prevButton" onclick="window.location.href = '{{ url_for('previous_clip') }}';" class="backBtn">Previous<i class="fas fa-angle-left"></i></span><i class="fas fa-angle-double-left"></i></button>
                 <button id="recordButton" class="recordBtn2">REC <i class="fas fa-microphone"></i></button>
                 <button id="stopButton" class="stopBtn" disabled>Stop <i class="fas fa-stop"></i> </button>
-                <button id="nextButton"href="{{ url_for('next_clip') }}" class="nextBtn">Next <i class="fas fa-angle-right"></i></span><i class="fas fa-angle-double-right"></i></button>
+                <button type="button" id="nextButton" onclick="window.location.href = '{{ url_for('next_clip') }}';" class="nextBtn">Next <i class="fas fa-angle-right"></i></span><i class="fas fa-angle-double-right"></i></button>
             </div>
         </div>
-        <button id="expButton" href="{{ url_for('export') }}" class="finishBtn">Finish <i class="fas fa-paper-plane"></i></button>
+        <button type = "button" id="expButton" onclick="window.location.href = '{{ url_for('export') }}';" class="finishBtn">Finish<i class="fas fa-paper-plane"></i></button>
         <div class="boxShadow">
             <div class="headBoxbtm">
                 <h2 class="headText">Playback</h2> 

@@ -196,7 +196,6 @@
         font-size: 1.5em;
         padding: 13px;
         display: inline-block;
-        float: right;
         width:25%;
         text-decoration: none!important;
         border-left: 3px solid #e54f00;
@@ -422,7 +421,7 @@
         }
         
         .navbar-brand{
-            .font-size:1.4em;
+            font-size:1.4em;
         }       
         .intro{
             font-size: 0.8em;
@@ -463,7 +462,7 @@
         }
         
         .navbar-brand{
-            .font-size:1em;
+            font-size:1em;
         }       
         .intro{
             font-size: 0.7em;
