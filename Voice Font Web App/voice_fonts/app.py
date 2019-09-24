@@ -9,6 +9,7 @@ import json
 import requests
 import urllib
 import http
+import time
 
 app = Flask(__name__)
 
@@ -64,7 +65,7 @@ def record():
         print('Error:')
         print(e)
     return render_template(
-        'record.html', 
+        'record.html',
         ID = voice.statements.harvard['ID'][0],
         SessionID = voice.statements.session_id,
         message = voice.statements.harvard['Phrases'][0],
@@ -96,24 +97,11 @@ def previous_clip():
         SessionID = voice.statements.session_id,
         message = voice.statements.harvard['Phrases'][i],
         title = 'Make a Recording',
-        year=datetime.now().year)
+        year=datetime.now().year) 
 
 @app.route('/export')
 def export():
         voice.statements.export_list()
-
-        url = base_url+'/api/PassBlob'
-        params = {'sessionID': voice.statements.session_id,
-                'fileID': 'Statements.txt'}
-        body = voice.statements.harvard.to_csv (encoding = "utf-8", header = None, index = None, sep = '\t')
-        try:
-            response = requests.post(url = url,params = params,data=body)
-            code = response.status_code
-            print(code)
-            print(response.text)
-        except Exception as e:
-            print('Error:')
-            print(e)
 
         zipUrl = base_url+'/api/zipfiles'
         zipParams = {'sessionID': voice.statements.session_id}
@@ -125,6 +113,7 @@ def export():
             print(response.text)
             result = json.dumps(response.json(), sort_keys=True, indent=2)
             parsedJson = json.loads(result)
+            print('JSON parse success')
         except Exception as e:
             print('Error:')
             print(e)
@@ -134,5 +123,5 @@ def export():
             message = 'Download your transcript and recordings',
             title = 'Download your recordings',
             txtURL = parsedJson['Text URL'],
-            zipURL = parsedJson['Zip URL'],
+            zipURL = parsedJson['Audio URL'],
             year=datetime.now().year)
