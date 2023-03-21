@@ -2,7 +2,7 @@
   "IsEncrypted": false,
   "Values": {
     "FUNCTIONS_WORKER_RUNTIME": "python",
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=voicefontstorage;AccountKey=***REMOVED***",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=AccountName;AccountKey=AccountKey",
     "FUNCTIONS_EXTENSION_VERSION": "~2",
     "WEBSITE_NODE_DEFAULT_VERSION": "8.11.1",
     "WEBSITE_RUN_FROM_ZIP": "https://voicefontstorage.blob.core.windows.net/function-releases/20190116000043-336b9fbc-4d70-44cd-8f8e-05211b95a562.zip?sv=2018-03-28&sr=b&sig=XSLisc%2BUmZ1dOj8SXTud4MpLF78OfYGS4Eje9TuPqec%3D&st=2019-01-15T23%3A55%3A49Z&se=2029-01-16T00%3A00%3A49Z&sp=r",
