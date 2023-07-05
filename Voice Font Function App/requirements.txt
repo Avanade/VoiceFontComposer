@@ -4,7 +4,7 @@ azure-storage-blob==12.13.0
 azure-storage-common==1.4.0
 azure-storage-file==1.4.0
 azure-storage-queue==12.4.0
-grpcio==1.14.2
+grpcio==1.53.0
 grpcio-tools==1.14.2
 protobuf==3.18.3
 six==1.12.0
